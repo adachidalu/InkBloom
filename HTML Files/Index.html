@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ink Bloom</title>
+  <link rel="stylesheet" href="../CSS_Stylesheets/Index.css" />
+  <link rel="icon" type="image/x-icon" href="../Images/favicon.PNG" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1><img src="../Images/Logo.PNG" alt="Ink Bloom Logo" width="40" height="40"/> Ink Bloom</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Our Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#" class="button">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 🧠 Teaser & Scene Wrapper -->
+  <div id="teaser-and-scene-container">
+    <!-- Teaser Section -->
+    <section id="teaser-section">
+      <h2>Describe Your Story Teaser</h2>
+      <textarea id="teaserInput" placeholder="Write a short teaser..." rows="10" maxlength="1000"></textarea>
+      <p id="wordCount">0/150 words</p>
+      <button onclick="generateSceneDetails()">Generate Scene Details</button>
+    </section>
+
+    <!-- Scene Breakdown Preview -->
+    <section id="scene-details" style="display: none;">
+      <h2>AI-Generated Scene Details</h2>
+      <label>Characters:</label>
+      <textarea id="characters"></textarea>
+      <label>Setting:</label>
+      <textarea id="setting"></textarea>
+      <label>Mood:</label>
+      <textarea id="mood"></textarea>
+      <label>Camera Angle:</label>
+      <textarea id="camera"></textarea>
+      <label>Actions:</label>
+      <textarea id="actions"></textarea>
+      <div class="sticky-generate-btn">
+        <button onclick="generateImage()">Approve & Generate Image</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- 🎨 Image Result -->
+  <section id="image-section" style="display:none;">
+    <h2>Generated Image</h2>
+    <div id="imageResult"></div>
+  </section>
+
+
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <h2>Welcome to Ink Bloom</h2>
+    <p>Your creative writing companion</p>
+    <a href="#" class="button">Explore Services</a>
+  </section>
+
+  <!-- Service Categories -->
+  <section id="services">
+    <h2>Popular Services</h2>
+    <div class="service-categories">
+      <div class="category gradient-top-bottom">
+        <a href="#"><h3>Plumbing</h3></a>
+        <p style="color: black">Find trusted plumbers for repairs and maintenance.</p>
+      </div>
+      <div class="category gradient-top-bottom">
+        <a href="#"><h3>Electrical</h3></a>
+        <p style="color: black">Reliable electricians for all your electrical needs.</p>
+      </div>
+      <div class="category gradient-top-bottom">
+        <a href="#"><h3>Carpentry</h3></a>
+        <p style="color: black">Expert carpenters for custom projects and repairs.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- About Us -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Ink Bloom is a platform designed to help writers grow by generating creative writing tools and connecting them with a community. Founded in 2024, our mission is to empower writers and storytellers through AI and shared knowledge.</p>
+  </section>
+
+  <!-- 🌐 External Script -->
+  <script src="../JS Scripts/inkbloom.js"></script>
+</body>
+</html>

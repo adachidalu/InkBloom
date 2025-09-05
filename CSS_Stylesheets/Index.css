@@ -1,0 +1,607 @@
+/* Reset basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Global styling */
+body {
+    line-height: 1.6;
+    color: #d1e4f7; 
+    background-color: #2c3e50; 
+}
+
+/* Header and Navigation */
+header {
+    background-color: #354b5e;
+    color: #d1e4f7; 
+    padding: 1rem 2rem;
+    display: grid;
+    align-items: center;
+    gap: 1rem;
+}
+
+header .logo h1 {
+    font-size: 1.8rem;
+    color: #537acc;
+}
+
+header nav ul {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1.5rem;
+    list-style-type: none;
+}
+
+header nav ul li a {
+    color: #d1e4f7;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #8bbde7;
+}
+
+header .button {
+    background-color: #8bbde7;
+    color: #354b5e;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+header .button:hover {
+    background-color: #669bbc;
+}
+
+/*Chat and Image Box Styling*/
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+#teaserInput {
+  height: 120px;
+}
+
+#teaser-and-scene-container {
+  display: flex;
+  gap: 2rem;
+}
+
+#scene-details {
+  flex: 0 0 0%;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+}
+
+#teaser-and-scene-container.scene-visible #teaser-section {
+  flex: 0 0 50%;
+}
+
+#teaser-and-scene-container.scene-visible #scene-details {
+  flex: 0 0 50%;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+button {
+  background-color: #5b3cc4;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #4529a0;
+}
+
+#errorMessage, .error {
+  color: red;
+  font-weight: bold;
+}
+
+#imageResult img {
+  margin-top: 20px;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+#wordCount {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* teaser and scene container */
+#teaser-and-scene-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  align-items: flex-start;
+  margin: 2rem;
+}
+
+/* By default, teaser takes 75%, scene is hidden */
+#teaser-section {
+  flex: 0 0 75%;
+  transition: flex 0.4s ease;
+}
+
+#scene-details {
+  flex: 0 0 0;
+  min-width: 300px;
+  padding-left: 1rem;
+  border-left: 2px solid #ccc;
+  transition: flex 0.4s ease;
+display: flex;               /* new */
+  flex-direction: column;      /* new */
+  gap: 1rem;                   /* new */
+  max-height: 90vh;            /* optional: limit height */
+  overflow-y: auto;
+  position: relative;
+   opacity: 0;
+  pointer-events: none; /* disables interaction when hidden */
+}
+
+/* When scene details are visible */
+#teaser-and-scene-container.scene-visible #teaser-section {
+  flex: 0 0 50%;
+}
+
+#teaser-and-scene-container.scene-visible #scene-details {
+  flex: 0 0 50%;
+  min-width: 300px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* #scene-details button {
+  margin-top: 1rem;
+  align-self: flex-start; /* keeps it left-aligned, optional */
+
+
+/* Keep button pinned to bottom inside scrollable panel */
+.sticky-generate-btn {
+  position: sticky;
+  bottom: 0;
+  background-color: #2c3e50; /* Match your site's theme */
+  padding: 1rem 0;
+  margin-top: auto;
+  z-index: 10;
+}
+
+.sticky-generate-btn button {
+  background-color: #5b3cc4;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.sticky-generate-btn button:hover {
+  background-color: #4529a0;
+}
+
+
+#teaser-section,
+#scene-details {
+  max-width: 100%;
+}
+
+
+
+
+
+/* Scene details aligning vertically with labels */
+.scene-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.scene-row label {
+  min-width: 120px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.scene-row textarea {
+  flex: 1;
+  min-height: 80px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+
+/* Hero Section */
+#hero {
+    background-image: url("../Images/Inkbloom_background.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #d1e4f7; 
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    min-height: 60vh;
+}
+
+#hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #aed6f1;
+}
+
+#hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+
+#hero .button {
+    background-color: #2980b9;
+    color: #354b5e;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#hero .button:hover {
+    background-color: #3055a5;
+}
+
+/* Service Categories */
+#services {
+    visibility: hidden;
+    background-color: #34495e;
+    padding: 2rem;
+    text-align: center;
+}
+
+#services h2 {
+    font-size: 2rem;
+    color: #aed6f1;
+    margin-bottom: 1.5rem;
+}
+
+.service-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.category {
+    background: linear-gradient(to bottom, #aed6f1, #2980b9);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Trade Worker Profiles */
+#profiles {
+    visibility: hidden;
+    padding: 2rem;
+    background-color: #2c3e50; 
+    text-align: center;
+}
+
+#profiles h2 {
+    color: #d1e4f7; 
+    margin-bottom: 1.5rem;
+}
+
+.profiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.profile {
+    background-color: #a0b4c7; 
+    color: #354b5e; 
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Circular Images */
+.profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* View Profile Button */
+.profile .view-profile-button {
+    display: inline-block;
+    background-color: #8bbde7; 
+    color: #354b5e; 
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 1rem; 
+}
+
+.profile .view-profile-button:hover {
+    background-color: #669bbc; 
+    transform: scale(1.05); 
+}
+
+/* More Services Button */
+#profiles .more-services-button {
+    display: inline-block;
+    background-color: #8bbde7;
+    color: #354b5e;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#profiles .more-services-button:hover {
+    background-color: #669bbc;
+    transform: scale(1.05);
+}
+
+/* Booking Section */
+#booking {
+    text-align: center;
+    padding: 2rem;
+    background-color: #34495e;
+}
+
+#booking button {
+    background-color: #aed6f1;
+    color: #354b5e;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#booking button:hover {
+    background-color: #2980b9;
+}
+
+/* Reviews Section */
+
+#reviews {
+    padding: 2rem;
+    background-color: #3b4f63;
+    text-align: center;
+    position: relative;
+}
+
+#reviews h2 {
+    color: #aed6f1;
+    margin-bottom: 1.5rem;
+}
+
+#reviews-container {
+    display: grid;
+    justify-content: center; 
+    height: 150px; 
+    overflow: hidden; 
+
+}
+
+.review {
+    display: grid;
+    place-items: center;
+    background-color: #2980b9;
+    color: #354b5e;
+    padding: 1rem;
+    margin: auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateX(100%); 
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    position: relative; 
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+}
+
+/* When active, show the review */
+.review.show {
+    opacity: 1;
+    transform: translateX(0); /* Slide into view */
+}
+
+/* When hidden, slide out to the left */
+.review.hide {
+    opacity: 0;
+    transform: translateX(-100%); /* Slide out of view */
+}
+
+/* Footer */
+footer {
+    background-color: #354b5e;
+    color: #d1e4f7; /* Light blue */
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #8bbde7;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+footer a:hover {
+    color: #669bbc;
+   
+}
+
+#ai-search {
+    padding: 2rem;
+    background-color: #34495e;
+    text-align: center;
+}
+
+#ai-search input, #ai-search select {
+    padding: 0.5rem;
+    width: 60%;
+    max-width: 500px;
+    margin: 0.5rem;
+    border-radius: 5px;
+    border: none;
+}
+
+#ai-search button {
+    padding: 0.5rem 1rem;
+    background-color: #8bbde7;
+    color: #354b5e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#chatResult {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #2c3e50;
+    color: #d1e4f7;
+    border-radius: 5px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-categories, .profiles {
+        grid-template-columns: 1fr;
+    }
+
+    header nav ul {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
+
+.generated-image-block {
+  display: inline-block;
+  margin: 1rem;
+  text-align: center;
+}
+
+.generated-image-block img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.download-button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #8bbde7;
+  color: #354b5e;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+  background-color: #669bbc;
+}
+
+#scene-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+#scene-details ul li {
+  margin-bottom: 0.5rem;
+  background-color: #354b5e;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.scene-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.scene-group label {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.scene-group textarea {
+  background-color: #1f2d3a;
+  color: #d1e4f7;
+  border: 1px solid #8bbde7;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.scene-group textarea:focus {
+  outline: none;
+  border-color: #669bbc;
+  box-shadow: 0 0 5px rgba(102, 155, 188, 0.8);
+}
+
+
+
+
